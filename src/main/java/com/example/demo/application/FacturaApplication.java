@@ -50,8 +50,9 @@ public class FacturaApplication {
 		}
 	}
 	
-	public FacturaRest crear (FacturaRest factura) {
-		factura.setNumero(1L);
+	public FacturaRest crear (FacturaRest factura, Long numero) {
+		numero = numero == null ? 1L : numero;
+		factura.setNumero(numero);
 		cargarProductos(factura.getItems());
 		factura.setValor_total(calcularValorTotal(factura.getItems()));
 		FacturaRest obtenida = facturaMapper.DomToRest(facturaService.guardar(facturaMapper.RestToDom(factura)));
@@ -65,9 +66,16 @@ public class FacturaApplication {
 		return facturas;
 	}
 	
-	public FacturaRest mostrarUno ( Long numero) {
+	public FacturaRest mostrarUno (Long numero) {
 		FacturaRest factura = facturaMapper.DomToRest(facturaService.buscarPorId(new Id(numero)));
 		System.out.println("Factura -> "+factura);
+		return factura;
+	}
+	
+	public FacturaRest actualizar(FacturaRest factura, Long numero) {
+		mostrarUno(numero);
+		System.out.println("Actualizado -> ");
+		crear(factura, numero);
 		return factura;
 	}
 	
@@ -75,7 +83,4 @@ public class FacturaApplication {
 		FacturaRest factura = facturaMapper.DomToRest(facturaService.eliminarPorId(new Id(numero)));
 		System.out.println("Eliminado -> "+factura);
 	}
-	
-	
-
 }

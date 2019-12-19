@@ -35,6 +35,13 @@ public class FacturaAdapter implements FacturaService {
 	public Factura buscarPorId(Id numero) {
 		return facturaMapper.DtoToDom(facturaRepository.findById(numero.getId()).orElseThrow(() -> new RegistroNoEncontradoException()));
 	}
+	
+	@Override
+	public Factura actualizarPorId(Factura factura, Id numero) {
+		Factura encontrado = buscarPorId(numero);
+		guardar(factura);
+		return encontrado;
+	}
 
 	@Override
 	public Factura eliminarPorId(Id numero) {

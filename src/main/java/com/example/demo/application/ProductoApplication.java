@@ -2,9 +2,6 @@ package com.example.demo.application;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.infraestructure.RestDto.ProductoRest;
 import com.example.demo.infraestruture.mapper.ProductoMapper;

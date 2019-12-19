@@ -12,6 +12,8 @@ public interface FacturaService {
 	public List<Factura> buscarTodos();
 	
 	public Factura buscarPorId (Id numero);
+	
+	public Factura actualizarPorId (Factura factura, Id numero);
 		
 	public Factura eliminarPorId (Id numero);
 }

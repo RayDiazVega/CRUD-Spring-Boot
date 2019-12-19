@@ -16,7 +16,6 @@ import com.example.demo.application.ProductoApplication;
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.infraestructure.RestDto.ProductoRest;
 import com.example.demo.infraestruture.mapper.ProductoMapper;
-import com.example.demo.shared.dominio.Codigo;
 
 @RestController
 @RequestMapping("/producto")
@@ -24,8 +23,7 @@ public class ProductoController {
 	
 	private ProductoApplication productoApplication;
 	
-	public ProductoController(@Autowired ProductoService productoService,
-							@Autowired ProductoMapper productoMapper) {
+	public ProductoController (@Autowired ProductoService productoService, @Autowired ProductoMapper productoMapper) {
 		this.productoApplication = new ProductoApplication(productoService, productoMapper);
 	}
 
@@ -45,7 +43,7 @@ public class ProductoController {
 	}
 
 	@PutMapping("/{codigo}")
-	public ProductoRest actualizar (@RequestBody ProductoRest producto, @PathVariable  String codigo) {
+	public ProductoRest actualizar (@RequestBody ProductoRest producto, @PathVariable String codigo) {
 		return productoApplication.actualizar(producto, codigo);
 	}
 
