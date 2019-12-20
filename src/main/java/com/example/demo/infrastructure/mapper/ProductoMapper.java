@@ -1,15 +1,15 @@
-package com.example.demo.infraestruture.mapper;
+package com.example.demo.infrastructure.mapper;
 
 import org.springframework.stereotype.Component;
 
 import com.example.demo.dominio.model.Producto;
-import com.example.demo.infraestructure.RestDto.ProductoRest;
-import com.example.demo.infraestructure.dto.ProductoDto;
+import com.example.demo.infrastructure.RestDto.ProductoRest;
+import com.example.demo.infrastructure.Dto.ProductoDto;
 import com.example.demo.shared.dominio.Codigo;
 import com.example.demo.shared.dominio.Nombre;
 import com.example.demo.shared.dominio.Valor;
-import com.example.demo.shared.infraestructure.mapper.MapperApiRest;
-import com.example.demo.shared.infraestructure.mapper.MapperRepository;
+import com.example.demo.shared.infrastructure.mapper.MapperApiRest;
+import com.example.demo.shared.infrastructure.mapper.MapperRepository;
 
 @Component
 public class ProductoMapper implements MapperApiRest<Producto, ProductoRest>, MapperRepository<Producto, ProductoDto>{

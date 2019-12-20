@@ -1,4 +1,4 @@
-package com.example.demo.shared.infraestructure.mapper;
+package com.example.demo.shared.infrastructure.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;

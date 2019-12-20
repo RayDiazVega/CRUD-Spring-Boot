@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.dto;
+package com.example.demo.infrastructure.Dto;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ public class BaseEntity {
 	@Column(name = "fecha_creacion", nullable = false, updatable = false)
 	@CreatedDate
 	private Date fechaCreacion;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_actualizacion", nullable = false, updatable = true)
 	@LastModifiedDate

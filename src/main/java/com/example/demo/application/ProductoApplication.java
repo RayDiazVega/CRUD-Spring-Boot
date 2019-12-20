@@ -3,8 +3,8 @@ package com.example.demo.application;
 import java.util.List;
 
 import com.example.demo.dominio.services.ProductoService;
-import com.example.demo.infraestructure.RestDto.ProductoRest;
-import com.example.demo.infraestruture.mapper.ProductoMapper;
+import com.example.demo.infrastructure.RestDto.ProductoRest;
+import com.example.demo.infrastructure.mapper.ProductoMapper;
 import com.example.demo.shared.dominio.Codigo;
 
 public class ProductoApplication {

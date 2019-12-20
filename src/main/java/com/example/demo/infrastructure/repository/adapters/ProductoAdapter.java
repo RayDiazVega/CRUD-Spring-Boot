@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.repository.adapters;
+package com.example.demo.infrastructure.repository.adapters;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dominio.model.Producto;
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.exceptions.RegistroNoEncontradoException;
-import com.example.demo.infraestructure.repository.database.ProductoRepository;
-import com.example.demo.infraestruture.mapper.ProductoMapper;
+import com.example.demo.infrastructure.repository.database.ProductoRepository;
+import com.example.demo.infrastructure.mapper.ProductoMapper;
 import com.example.demo.shared.dominio.Codigo;
 
 @Service

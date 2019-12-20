@@ -1,16 +1,16 @@
-package com.example.demo.infraestruture.mapper;
+package com.example.demo.infrastructure.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.dominio.model.Factura;
-import com.example.demo.infraestructure.RestDto.FacturaRest;
-import com.example.demo.infraestructure.dto.FacturaDto;
+import com.example.demo.infrastructure.RestDto.FacturaRest;
+import com.example.demo.infrastructure.Dto.FacturaDto;
 import com.example.demo.shared.dominio.Id;
 import com.example.demo.shared.dominio.Nombre;
 import com.example.demo.shared.dominio.Valor;
-import com.example.demo.shared.infraestructure.mapper.MapperApiRest;
-import com.example.demo.shared.infraestructure.mapper.MapperRepository;
+import com.example.demo.shared.infrastructure.mapper.MapperApiRest;
+import com.example.demo.shared.infrastructure.mapper.MapperRepository;
 
 @Component
 public class FacturaMapper implements MapperApiRest<Factura, FacturaRest>, MapperRepository<Factura, FacturaDto>{

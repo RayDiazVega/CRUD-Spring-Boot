@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.dto;
+package com.example.demo.infrastructure.Dto;
 
 import java.util.List;
 

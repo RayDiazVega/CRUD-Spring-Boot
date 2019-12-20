@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import com.example.demo.dominio.services.FacturaService;
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.exceptions.RegistroNoEncontradoException;
-import com.example.demo.infraestructure.RestDto.FacturaRest;
-import com.example.demo.infraestructure.RestDto.ItemRest;
-import com.example.demo.infraestructure.RestDto.ProductoRest;
-import com.example.demo.infraestruture.mapper.FacturaMapper;
-import com.example.demo.infraestruture.mapper.ProductoMapper;
+import com.example.demo.infrastructure.RestDto.FacturaRest;
+import com.example.demo.infrastructure.RestDto.ItemRest;
+import com.example.demo.infrastructure.RestDto.ProductoRest;
+import com.example.demo.infrastructure.mapper.FacturaMapper;
+import com.example.demo.infrastructure.mapper.ProductoMapper;
 import com.example.demo.shared.dominio.Codigo;
 import com.example.demo.shared.dominio.Id;
 

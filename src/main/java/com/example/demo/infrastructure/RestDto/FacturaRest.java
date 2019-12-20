@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.RestDto;
+package com.example.demo.infrastructure.RestDto;
 
 import java.util.List;
 

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.application.FacturaApplication;
 import com.example.demo.dominio.services.FacturaService;
 import com.example.demo.dominio.services.ProductoService;
-import com.example.demo.infraestructure.RestDto.FacturaRest;
-import com.example.demo.infraestruture.mapper.FacturaMapper;
-import com.example.demo.infraestruture.mapper.ProductoMapper;
+import com.example.demo.infrastructure.RestDto.FacturaRest;
+import com.example.demo.infrastructure.mapper.FacturaMapper;
+import com.example.demo.infrastructure.mapper.ProductoMapper;
 
 
 @RestController

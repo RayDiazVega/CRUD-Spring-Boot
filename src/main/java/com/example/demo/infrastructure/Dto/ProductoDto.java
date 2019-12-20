@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.dto;
+package com.example.demo.infrastructure.Dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

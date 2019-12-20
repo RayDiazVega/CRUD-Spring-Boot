@@ -1,4 +1,4 @@
-package com.example.demo.infraestructure.repository.adapters;
+package com.example.demo.infrastructure.repository.adapters;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dominio.model.Factura;
 import com.example.demo.dominio.services.FacturaService;
 import com.example.demo.exceptions.RegistroNoEncontradoException;
-import com.example.demo.infraestructure.repository.database.FacturaRepository;
-import com.example.demo.infraestruture.mapper.FacturaMapper;
+import com.example.demo.infrastructure.repository.database.FacturaRepository;
+import com.example.demo.infrastructure.mapper.FacturaMapper;
 import com.example.demo.shared.dominio.Id;
 
 @Service
