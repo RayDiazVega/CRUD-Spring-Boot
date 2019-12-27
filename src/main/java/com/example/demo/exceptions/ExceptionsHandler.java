@@ -19,7 +19,7 @@ public class ExceptionsHandler {
 	public String getUUID() {
 		return UUID.randomUUID().toString();
 	}
-	
+	/*
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCode handleException(Exception e) {
@@ -29,6 +29,7 @@ public class ExceptionsHandler {
 		logError(errorCode, e);
 		return errorCode;
 	}
+	*/
 	
 	@ExceptionHandler(RegistroNoEncontradoException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
