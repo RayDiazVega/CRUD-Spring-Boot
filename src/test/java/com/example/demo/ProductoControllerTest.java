@@ -20,9 +20,9 @@ public class ProductoControllerTest {
     private MockMvc mockMvc;
   
     @Test
-    public void whenValidInput_thenReturns200() throws Exception {
+    public void whenValidRequest_thenReturns200() throws Exception {
 
-        mockMvc.perform(get("/producto"))
+        mockMvc.perform(get("/producto/{codigo}", "001"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));

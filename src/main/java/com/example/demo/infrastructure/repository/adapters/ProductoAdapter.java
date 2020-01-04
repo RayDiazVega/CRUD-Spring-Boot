@@ -1,17 +1,32 @@
 package com.example.demo.infrastructure.repository.adapters;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.example.demo.dominio.model.Producto;
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.exceptions.RegistroNoEncontradoException;
-import com.example.demo.infrastructure.repository.database.ProductoRepository;
+import com.example.demo.infrastructure.Dto.ProductoDto;
 import com.example.demo.infrastructure.mapper.ProductoMapper;
+import com.example.demo.infrastructure.repository.database.ProductoRepository;
 import com.example.demo.shared.dominio.Codigo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
 public class ProductoAdapter implements ProductoService {
@@ -54,5 +69,19 @@ public class ProductoAdapter implements ProductoService {
 		Producto producto = buscarPorId(codigo);
 		productoRepository.deleteById(codigo.getCodigo());
 		return producto;
+	}
+
+	@Override
+	public String generateReport () throws FileNotFoundException, JRException{
+		String path = "C:\\Users\\ACER1\\Documents\\Report";
+		List<ProductoDto> productos = productoRepository.findAll(Sort.by(Sort.Direction.ASC, "nombre"));
+		File file = ResourceUtils.getFile("classpath:productos.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(productos);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "Aztrarok");
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+		JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\Productos.pdf");
+		return "report generated in path : " + path;
 	}
 }

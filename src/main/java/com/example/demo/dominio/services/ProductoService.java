@@ -1,14 +1,16 @@
 package com.example.demo.dominio.services;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import com.example.demo.dominio.model.Producto;
-import com.example.demo.shared.dominio.Codigo;
 import com.example.demo.exceptions.RegistroNoEncontradoException;
+import com.example.demo.shared.dominio.Codigo;
+
+import net.sf.jasperreports.engine.JRException;
 
 
 public interface ProductoService {
-	
 	
 	/**
 	 * Saves a given {@literal Producto}.
@@ -64,4 +66,15 @@ public interface ProductoService {
 	 * @throws RegistroNoEncontradoException if {@literal codigo} not found.
 	 */
 	public Producto eliminarPorId (Codigo codigo);
+
+	/**
+	 * Generate report for the producto entity
+	 * 
+	 * @param none
+	 * @return String "report generated in path..."
+	 * @throws FileNotFoundException if file not found.
+	 * @throws JRException failed to get sources.
+	 */
+	public String generateReport () throws FileNotFoundException, JRException;
+	
 }
