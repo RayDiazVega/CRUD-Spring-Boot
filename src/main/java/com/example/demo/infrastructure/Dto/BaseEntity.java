@@ -41,8 +41,5 @@ public class BaseEntity {
 	public void setFechaActualizada(Date fechaActualizada) {
 		this.fechaActualizada = fechaActualizada;
 	}
-
-
-	
 	
 }

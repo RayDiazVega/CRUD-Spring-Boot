@@ -3,7 +3,7 @@ package com.example.demo.shared.infrastructure.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface MapperApiRest <I, O>{
+public interface MapperApiRest <I, O> {
 	
 	public O DomToRest(I i);//Dominio a ApiRest
 	
@@ -16,7 +16,5 @@ public interface MapperApiRest <I, O>{
 	public default List<I> RestToDom(List<O> instancias){//Lista de ApiRest a lista de Dominio
 		return instancias.stream().map(this::RestToDom).collect(Collectors.toList());
 	}
-	
 
-	
 }

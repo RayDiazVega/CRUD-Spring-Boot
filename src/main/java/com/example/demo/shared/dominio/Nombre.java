@@ -6,7 +6,7 @@ import com.example.demo.exceptions.NombreException;
 
 public class Nombre {
 	
-	private final  String nombre;
+	private final String nombre;
 	
 	public Nombre(String nombre) {
 		
