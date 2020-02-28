@@ -43,13 +43,13 @@ ORDER BY categoria ASC]]>
 		<groupHeader>
 			<band height="33">
 				<textField>
-					<reportElement mode="Opaque" x="0" y="-27" width="554" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="3ec445df-9172-4bd3-82e4-c7c119381b41"/>
+					<reportElement mode="Opaque" x="0" y="-30" width="554" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="3ec445df-9172-4bd3-82e4-c7c119381b41"/>
 					<box leftPadding="3">
 						<pen lineColor="#000000"/>
 						<topPen lineWidth="1.5" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.5" lineStyle="Solid" lineColor="#000000"/>
 						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.5" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement verticalAlignment="Middle">
 						<font size="18" isBold="true"/>
@@ -95,7 +95,7 @@ ORDER BY categoria ASC]]>
 	<columnHeader>
 		<band height="21">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="-26" width="380" height="20" forecolor="#FFFFFF" backcolor="#1B2E59" uuid="eee2724e-8b1e-4eac-aec3-be028ea149af">
+				<reportElement mode="Opaque" x="0" y="-29" width="380" height="20" forecolor="#FFFFFF" backcolor="#1B2E59" uuid="eee2724e-8b1e-4eac-aec3-be028ea149af">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a320d3c-5bd9-4537-8d4f-8e3751a8c817"/>
 				</reportElement>
 				<box>
@@ -107,7 +107,7 @@ ORDER BY categoria ASC]]>
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="380" y="-26" width="174" height="20" forecolor="#FFFFFF" backcolor="#1B2E59" uuid="0f5b1754-da8c-4c41-badd-17d5751ffb88">
+				<reportElement mode="Opaque" x="380" y="-29" width="174" height="20" forecolor="#FFFFFF" backcolor="#1B2E59" uuid="0f5b1754-da8c-4c41-badd-17d5751ffb88">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9fe75d6-f55f-4685-963f-da6227ce1f9b"/>
 				</reportElement>
 				<box>
@@ -123,16 +123,16 @@ ORDER BY categoria ASC]]>
 	<detail>
 		<band height="20">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="-8" width="555" height="1" uuid="f2843f6a-60bf-4800-acc4-2d578b1de864"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-11" width="555" height="1" uuid="f2843f6a-60bf-4800-acc4-2d578b1de864"/>
 			</line>
 			<textField textAdjust="StretchHeight">
-				<reportElement x="0" y="-28" width="380" height="20" uuid="4c9071bb-a4f5-46b6-a5db-67f64f5d0890">
+				<reportElement x="0" y="-31" width="380" height="20" uuid="4c9071bb-a4f5-46b6-a5db-67f64f5d0890">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e597b723-48ec-482e-987a-3320499dc66b"/>
 				</reportElement>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.5" lineStyle="Solid" lineColor="#000000"/>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
@@ -142,13 +142,13 @@ ORDER BY categoria ASC]]>
 				<textFieldExpression><![CDATA[$F{actividad}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
-				<reportElement x="380" y="-28" width="174" height="20" uuid="00c8e1ad-622e-478f-b4c9-da5f98aaba77">
+				<reportElement x="380" y="-31" width="174" height="20" uuid="00c8e1ad-622e-478f-b4c9-da5f98aaba77">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30c58691-a716-4f43-abb6-355ddc625df1"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
-					<rightPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
@@ -161,21 +161,7 @@ ORDER BY categoria ASC]]>
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="17">
-			<textField>
-				<reportElement mode="Opaque" x="0" y="-23" width="515" height="13" backcolor="#E6E6E6" uuid="8a805560-af19-4c84-97c0-72b4682e8f8a"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="-23" width="40" height="13" backcolor="#E6E6E6" uuid="afb70a48-c646-4bc7-aaa9-d5e7b470b1ed"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="-23" width="100" height="13" uuid="8e808ff6-048b-41f3-8196-2334b7277d74"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="17"/>
 	</pageFooter>
 	<summary>
 		<band/>
