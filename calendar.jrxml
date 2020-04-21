@@ -3,9 +3,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="calendary2" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5772cfb-7af5-4086-8dc8-cea80df368b2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
-	<parameter name="ACADEMIC_CALENDAR_ID" class="java.lang.Integer">
+	<parameter name="ID" class="java.lang.Integer">
 		<parameterDescription><![CDATA[ID del calendario academico]]></parameterDescription>
-		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT ac.description calendario,
@@ -24,7 +23,7 @@ FROM calendar_detail cd
 	Inner Join activity_category ct ON
 	 ca.category_id = ct.id
 WHERE
-	 ac.id = $P{ACADEMIC_CALENDAR_ID}
+	 ac.id = $P{ID}
 ORDER BY categoria ASC]]>
 	</queryString>
 	<field name="calendario" class="java.lang.String">
