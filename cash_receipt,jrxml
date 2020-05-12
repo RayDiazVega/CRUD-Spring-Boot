@@ -42,7 +42,7 @@
 	<subDataset name="Dataset1" uuid="29c15180-631a-401d-8a63-98178ede795a">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
-		<parameter name="ID2" class="java.lang.Integer">
+		<parameter name="ID1" class="java.lang.Integer">
 			<parameterDescription><![CDATA[ID del recibo de caja]]></parameterDescription>
 		</parameter>
 		<queryString language="SQL">
@@ -54,7 +54,7 @@ inner join settlements s on cs.settlements_id = s.id
 inner join settlements_settlement_details ssd ON ssd.settlements_dto_id = s.id
 inner join settlement_details sd ON sd.id = ssd.settlement_details_id
 inner join billing_concept bc ON bc.id = sd.billing_concept_id
-where cr.id = $P{ID2}]]>
+where cr.id = $P{ID1}]]>
 		</queryString>
 		<field name="name" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="name"/>
@@ -79,11 +79,14 @@ where cr.id = $P{ID2}]]>
 	<subDataset name="Dataset2" uuid="2b497dcf-0364-4215-8bb5-fe53022d4423">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+		<parameter name="ID2" class="java.lang.Integer">
+			<parameterDescription><![CDATA[ID del recibo de caja]]></parameterDescription>
+		</parameter>
 		<queryString language="SQL">
 			<![CDATA[select cc.total_collection
 from cash_receipt cr
 inner join collection_cash cc on cr.collection_cash_id = cc.id
-where cr.id = 1]]>
+where cr.id = $P{ID2}]]>
 		</queryString>
 		<field name="total_collection" class="java.lang.Double">
 			<property name="com.jaspersoft.studio.field.label" value="total_collection"/>
@@ -336,7 +339,7 @@ WHERE
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Dataset1" uuid="e2031e4a-d72b-4ca2-bae6-12c61803fe60">
-						<datasetParameter name="ID2">
+						<datasetParameter name="ID1">
 							<datasetParameterExpression><![CDATA[$P{ID}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -437,6 +440,9 @@ WHERE
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Dataset2" uuid="443133b4-1432-4a86-b23e-8c3707b2adac">
+						<datasetParameter name="ID2">
+							<datasetParameterExpression><![CDATA[$P{ID}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="277" uuid="6d33a09f-a325-4441-9fa9-ea276271848e">
