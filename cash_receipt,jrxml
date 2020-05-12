@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cash receipt" pageWidth="397" pageHeight="842" columnWidth="357" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="49d90462-f7b2-46b7-89a2-5eb11707178b">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
@@ -108,8 +108,10 @@ FROM cash_receipt cr
 	 cc.cashier_id = ca.id 
 	inner join boxes b ON 
 	 cc.boxes_id = b.id 
-	inner join settlements s ON 
-	 cc.settlement_id = s.id 
+	Inner Join collection_cash_settlements cs ON 
+	 cs.collection_cash_dto_id = cc.id
+	Inner Join settlements s ON 
+	 cs.settlements_id = s.id 
 	inner join third th ON 
 	 s.third_id = th.id 
 	inner join document_type dt ON 
