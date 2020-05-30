@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cash receipt" pageWidth="397" pageHeight="842" columnWidth="357" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="49d90462-f7b2-46b7-89a2-5eb11707178b">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -41,7 +41,7 @@
 	</style>
 	<subDataset name="Dataset1" uuid="29c15180-631a-401d-8a63-98178ede795a">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 		<parameter name="ID1" class="java.lang.Integer">
 			<parameterDescription><![CDATA[ID del recibo de caja]]></parameterDescription>
 		</parameter>
@@ -50,9 +50,9 @@
 from cash_receipt cr
 inner join collection_cash cc on cr.collection_cash_id = cc.id
 inner join collection_cash_settlements cs ON cs.collection_cash_dto_id = cc.id
-inner join settlements s on cs.settlements_id = s.id
-inner join settlements_settlement_details ssd ON ssd.settlements_dto_id = s.id
-inner join settlement_details sd ON sd.id = ssd.settlement_details_id
+inner join settlement s on cs.settlements_id = s.id
+inner join settlement_settlement_details ssd ON ssd.settlement_dto_id = s.id
+inner join settlement_detail sd ON sd.id = ssd.settlement_details_id
 inner join billing_concept bc ON bc.id = sd.billing_concept_id
 where cr.id = $P{ID1}]]>
 		</queryString>
@@ -78,7 +78,7 @@ where cr.id = $P{ID1}]]>
 	</subDataset>
 	<subDataset name="Dataset2" uuid="2b497dcf-0364-4215-8bb5-fe53022d4423">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 		<parameter name="ID2" class="java.lang.Integer">
 			<parameterDescription><![CDATA[ID del recibo de caja]]></parameterDescription>
 		</parameter>
@@ -100,9 +100,9 @@ where cr.id = $P{ID2}]]>
 		<![CDATA[SELECT cr.receipt_number,
 	concat( ca.names,' ',ca.last_name1,' ',ca.last_name2),
 	b.name,
-	cc.date,
+	cc.date_time,
 	concat( th.name,' ',th.last_name),
-	dt.abbrevation,
+	dt.abbreviation,
 	th.document_id
 FROM cash_receipt cr
 	inner join collection_cash cc ON 
@@ -113,7 +113,7 @@ FROM cash_receipt cr
 	 cc.boxes_id = b.id 
 	Inner Join collection_cash_settlements cs ON 
 	 cs.collection_cash_dto_id = cc.id
-	Inner Join settlements s ON 
+	Inner Join settlement s ON 
 	 cs.settlements_id = s.id 
 	inner join third th ON 
 	 s.third_id = th.id 
@@ -133,15 +133,15 @@ WHERE
 		<property name="com.jaspersoft.studio.field.label" value="name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="boxes"/>
 	</field>
-	<field name="date" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="date"/>
+	<field name="date_time" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date_time"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="collection_cash"/>
 	</field>
 	<field name="COLUMN_6" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="concat"/>
 	</field>
-	<field name="abbrevation" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="abbrevation"/>
+	<field name="abbreviation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="abbreviation"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="document_type"/>
 	</field>
 	<field name="document_id" class="java.lang.Long">
@@ -164,7 +164,7 @@ WHERE
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{date_time}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
@@ -300,7 +300,7 @@ WHERE
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{abbrevation}.concat(" :")]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{abbreviation}.concat(" :")]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement x="80" y="80" width="277" height="20" uuid="47ff0013-63a5-4d93-8432-d86858a94eac">
