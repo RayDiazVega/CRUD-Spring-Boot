@@ -121,7 +121,7 @@ WHERE
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2f45d03d-7de5-4a9f-a82f-231dc4de9fdb"/>
 				<staticText>
-					<reportElement x="20" y="20" width="375" height="43" forecolor="#FFFFFF" uuid="92abb4b9-9865-40ce-88b3-1909f4bc1369"/>
+					<reportElement x="20" y="20" width="554" height="43" forecolor="#FFFFFF" uuid="92abb4b9-9865-40ce-88b3-1909f4bc1369"/>
 					<textElement>
 						<font size="30" isBold="true"/>
 					</textElement>
