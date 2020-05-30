@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="close_of_boxes" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f70058f-d84f-48b1-9e42-c48a20a91228">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -32,7 +32,7 @@
 	</style>
 	<subDataset name="Dataset1" uuid="e541221c-ca8f-497a-8c56-5758ca6c0240">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 		<parameter name="ID2" class="java.lang.Integer">
 			<parameterDescription><![CDATA[ID del cierre de caja]]></parameterDescription>
 		</parameter>
@@ -56,28 +56,23 @@ order by "Valor ($)" desc]]>
 		</group>
 	</subDataset>
 	<subDataset name="Dataset2" uuid="2195fd1d-7c34-40b4-9627-4b3e0830e153">
-		<property name="com.jaspersoft.studio.data.sql.tables">
-			<![CDATA[c2V0dGxlbWVudHMgLDM2Niw3Nyw5ZTUyMTlhYi01M2VlLTRlZjItOWY2Yi1jNDU0MjRmZWI2MTE7
-Y2xvc2Vfb2ZfYm94ZXMgLDE1LDE1LGJkYzRiNTI4LTk2YmUtNGE1MS1hMmMxLTg4NDQyMTZkYWZh
-YTtjb2xsZWN0aW9uX2Nhc2ggLDE5MiwxODYsNzU2ODNlYmQtMzJhYy00NDk5LTg4YzctYzgzY2M5
-NGE5NWFiOw==]]>
-		</property>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Yinn2"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Finance"/>
 		<parameter name="ID2" class="java.lang.Integer">
 			<parameterDescription><![CDATA[ID del cierre de caja]]></parameterDescription>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[SELECT s.nro_facture, cc.total_collection, cc.date as date, cc.date as time
+			<![CDATA[SELECT s.nro_facture, cc.total_collection, cc.date_time
 FROM close_of_boxes cb
 	Inner Join collection_cash cc ON 
 	 cb.boxes_id = cc.boxes_id
 	Inner Join collection_cash_settlements cs ON 
 	 cs.collection_cash_dto_id = cc.id
-	Inner Join settlements s ON 
+	Inner Join settlement s ON 
 	 cs.settlements_id = s.id
 WHERE
 	 cb.id = $P{ID2}
-ORDER by cc.date ASC]]>
+ORDER by cc.date_time ASC]]>
 		</queryString>
 		<field name="nro_facture" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="nro_facture"/>
@@ -87,12 +82,8 @@ ORDER by cc.date ASC]]>
 			<property name="com.jaspersoft.studio.field.label" value="total_collection"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="collection_cash"/>
 		</field>
-		<field name="date" class="java.sql.Timestamp">
-			<property name="com.jaspersoft.studio.field.label" value="date"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="collection_cash"/>
-		</field>
-		<field name="time" class="java.sql.Timestamp">
-			<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<field name="date_time" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="date_time"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="collection_cash"/>
 		</field>
 	</subDataset>
@@ -101,8 +92,7 @@ ORDER by cc.date ASC]]>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT b.name,
-	cb.date,
-	cb.time,
+	cb.date_time,
 	ca.names
 FROM close_of_boxes cb
 	Inner Join boxes b ON 
@@ -116,11 +106,8 @@ WHERE
 		<property name="com.jaspersoft.studio.field.label" value="name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="boxes"/>
 	</field>
-	<field name="date" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="date"/>
-	</field>
-	<field name="time" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="time"/>
+	<field name="date_time" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date_time"/>
 	</field>
 	<field name="names" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="names"/>
@@ -190,7 +177,7 @@ WHERE
 						<font size="14"/>
 						<paragraph leftIndent="5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{date_time}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Opaque" x="0" y="40" width="80" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="43f778fb-ca0b-485f-8f3a-85c226d58d42">
@@ -234,7 +221,7 @@ WHERE
 						<font size="14"/>
 						<paragraph leftIndent="5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{date_time}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<componentElement>
@@ -301,14 +288,14 @@ WHERE
 			</componentElement>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="290" y="100" width="265" height="208" uuid="e0c2a74c-2852-4ede-ae16-f36f116832db"/>
+					<reportElement x="290" y="100" width="265" height="208" uuid="34b284b5-14c3-4772-881c-f0748f02eda8"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset>
 					<dataset resetType="Report">
-						<datasetRun subDataset="Dataset1" uuid="2aa10484-552c-4977-b2bf-1d4e029bee16">
+						<datasetRun subDataset="Dataset1" uuid="4b2d21f3-8def-404a-b207-422bd9b27618">
 							<datasetParameter name="ID2">
 								<datasetParameterExpression><![CDATA[$P{ID}]]></datasetParameterExpression>
 							</datasetParameter>
@@ -451,7 +438,7 @@ WHERE
 									<font size="14"/>
 									<paragraph leftIndent="0" rightIndent="5"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{date_time}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -487,7 +474,7 @@ WHERE
 									<font size="14"/>
 									<paragraph leftIndent="0" rightIndent="5"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{date_time}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
